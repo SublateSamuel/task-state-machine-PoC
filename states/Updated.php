@@ -30,16 +30,17 @@ class Updated extends State
     public function event(array $task): array
     {
         $task['files'] = [
-            'name' => 'arquivo.pdf',
+            'name' => 'file.pdf',
             'sha256' => 'dqwhfioquhwfiouhqw',
             'url' => 'http://download.file.pdf'
         ];
         $task['bot'] = 'finish';
         if (!in_array($this->file, $task['files'])) {
             $this->transition(new Error(
-                "Não foi possivel prosseguir com a tarefa sem o arquivo -> {$this->file}"
+                "It was not possible to proceed with the task without the file -> {$this->file}"
                 )
             );
+            $this->getStateMachine()->event();
             return [];
         }
         return $task;

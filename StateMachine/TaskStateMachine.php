@@ -28,6 +28,7 @@ class TaskStateMachine
     public function restartState(State $state): self
     {
         $this->setNewState(new Restarted($state))->event();
+        $this->event();
         return $this;
     }
 
@@ -55,7 +56,7 @@ class TaskStateMachine
 
     private function setNewState(State $state): self
     {
-        echo "Tansition to state -> " . $state . PHP_EOL;
+//        echo "Tansition to state -> " . $state . PHP_EOL;
         $this->currentState = $state;
         $state->setState($this);
         $this->registerTransition();
