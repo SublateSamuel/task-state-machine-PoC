@@ -30,6 +30,7 @@ class Error extends State
     public function event(array $task): array
     {
         $task['message'] = $this->message;
+        $task['bot'] = 'error';
         return $task;
     }
 }
