@@ -45,7 +45,7 @@ $dataTask = [
     'task' => 'take_file',
 ];
 
-$file =  'file.pdf';
+$fileExpected =  'file.pdf';
 ```
 
 Here, an array **`$dataTask`**
@@ -64,7 +64,7 @@ $task->event()
     ->event()
     ->transitionTo(new Processing())
     ->event()
-    ->transitionTo(new Updated($file))
+    ->transitionTo(new Updated($fileExpected))
     ->event()
     ->transitionTo(new Completed());
 ```
